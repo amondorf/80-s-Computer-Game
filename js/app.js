@@ -69,10 +69,10 @@ Player.prototype.handleInput = function(key) {
 // Function to check whether player & bug collide
 function checkCollisions () {
 allEnemies.forEach(function(enemy) {
-         if(enemy.x < player.x + 50 &&
-            enemy.x + 70 > player.x &&
-            enemy.y < player.y + 50 &&
-            enemy.y + 70 > player.y) {
+         if(enemy.x < player.x + 60 &&
+            enemy.x + 60 > player.x &&
+            enemy.y < player.y + 60 &&
+            enemy.y + 60 > player.y) {
               newGame();
             }
         });};
