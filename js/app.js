@@ -11,13 +11,14 @@ var Enemy = function(x, y) {
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
     if (this.x > 600) {
-      this.x = -10;
+      this.x = -100;
     }
   };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    this.checkCollisions();
 };
 
 // This is our player (hero!)
@@ -29,15 +30,15 @@ var Player = function() {
 
 // Update the player's position to the start position if player goes off screen
 Player.prototype.update = function(dt) {
-  if (this.x < -50) {
+  if (this.x < 0) {
     this.x = 200;
-  };
-  if (this.x > 480) {
+  }
+  if (this.x > 450) {
     this.x = 200;
-  };
-  if (this.y < -10) {
+  }
+  if (this.y < 0) {
     this.y = 380;
-  };
+  }
   if (this.y > 450) {
     this.y = 380;
   }
@@ -67,19 +68,18 @@ Player.prototype.handleInput = function(key) {
 };
 
 // Function to check whether player & bug collide
-function checkCollisions () {
-allEnemies.forEach(function(enemy) {
-         if(enemy.x < player.x + 60 &&
-            enemy.x + 60 > player.x &&
-            enemy.y < player.y + 60 &&
-            enemy.y + 60 > player.y) {
-              newGame();
+Enemy.prototype.checkCollisions = function() {
+         if(this.x < player.x + 60 &&
+            this.x + 60 > player.x &&
+            this.y < player.y + 60 &&
+            this.y + 60 > player.y) {
+              Player.prototype.newGame();
             }
-        });};
+        };
 
 // Function to reset player to start position in case of collision
-var newGame = function() {
-  window.alert("try again!");
+Player.prototype.newGame = function(){
+  window.alert("TRY AGAIN!");
   player.x = 200;
   player.y = 380;
 };
