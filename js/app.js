@@ -67,14 +67,13 @@ Player.prototype.handleInput = function(key) {
     }
 };
 
-
 // Function to check whether player & bug collide
 Enemy.prototype.checkCollisions = function() {
     if (this.x < player.x + 60 &&
         this.x + 60 > player.x &&
         this.y < player.y + 60 &&
         this.y + 60 > player.y) {
-        Player.prototype.newGame();
+        player.newGame();
     }
 };
 
@@ -85,16 +84,12 @@ Player.prototype.newGame = function() {
     this.y = 380;
 };
 
-
-
 // Instantiating objects
 var firstEnemy = new Enemy(-80, 220);
 var secondEnemy = new Enemy(10, 140);
 var thirdEnemy = new Enemy(-10, 50);
 var allEnemies = [firstEnemy, secondEnemy, thirdEnemy];
 var player = new Player();
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method.
@@ -105,6 +100,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
