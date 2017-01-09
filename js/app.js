@@ -4,16 +4,16 @@ var Enemy = function(x, y) {
     this.x = x;
     this.y = y;
     this.speed = Math.floor(Math.random() * 200);
-  };
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
     if (this.x > 600) {
-      this.x = -100;
+        this.x = -100;
     }
-  };
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -23,25 +23,25 @@ Enemy.prototype.render = function() {
 
 // This is our player (hero!)
 var Player = function() {
-  this.sprite = 'images/char-cat-girl.png';
-  this.x = 200;
-  this.y = 380;
+    this.sprite = 'images/char-cat-girl.png';
+    this.x = 200;
+    this.y = 380;
 };
 
 // Update the player's position to the start position if player goes off screen
 Player.prototype.update = function(dt) {
-  if (this.x < 0) {
-    this.x = 200;
-  }
-  if (this.x > 450) {
-    this.x = 200;
-  }
-  if (this.y < 0) {
-    this.y = 380;
-  }
-  if (this.y > 450) {
-    this.y = 380;
-  }
+    if (this.x < 0) {
+        this.x = 200;
+    }
+    if (this.x > 450) {
+        this.x = 200;
+    }
+    if (this.y < 0) {
+        this.y = 380;
+    }
+    if (this.y > 450) {
+        this.y = 380;
+    }
 };
 
 // Draw the player on screen
@@ -67,29 +67,33 @@ Player.prototype.handleInput = function(key) {
     }
 };
 
+
 // Function to check whether player & bug collide
 Enemy.prototype.checkCollisions = function() {
-         if(this.x < player.x + 60 &&
-            this.x + 60 > player.x &&
-            this.y < player.y + 60 &&
-            this.y + 60 > player.y) {
-              Player.prototype.newGame();
-            }
-        };
-
-// Function to reset player to start position in case of collision
-Player.prototype.newGame = function(){
-  window.alert("TRY AGAIN!");
-  player.x = 200;
-  player.y = 380;
+    if (this.x < player.x + 60 &&
+        this.x + 60 > player.x &&
+        this.y < player.y + 60 &&
+        this.y + 60 > player.y) {
+        Player.prototype.newGame();
+    }
 };
 
+// Function to reset player to start position in case of collision
+Player.prototype.newGame = function() {
+    window.alert("TRY AGAIN!");
+    this.x = 200;
+    this.y = 380;
+};
+
+
+
 // Instantiating objects
-var firstEnemy = new Enemy(-80,220);
-var secondEnemy = new Enemy(10,140);
-var thirdEnemy = new Enemy(-10,50);
+var firstEnemy = new Enemy(-80, 220);
+var secondEnemy = new Enemy(10, 140);
+var thirdEnemy = new Enemy(-10, 50);
 var allEnemies = [firstEnemy, secondEnemy, thirdEnemy];
 var player = new Player();
+
 
 
 // This listens for key presses and sends the keys to your

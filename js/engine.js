@@ -158,6 +158,8 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
+      this.x = 200;
+      this.y = 380;
         // noop
     }
 
